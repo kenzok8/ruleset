@@ -1,22 +1,23 @@
 # ============================================================
 # Honk 配置 · 完整版（AI 分组 + 国内外 DNS 分流）
 # ============================================================
-# Honk 是 dae 的 Rust + eBPF 重写，语法同源，但有三处结构性差异：
-#   1. global / experimental 拆到 system.dae，用 include 引入
-#   2. dns.upstream 定义时就绑定出口（default -> direct / remote -> Proxy）
-#   3. 多 experimental.native_api 段（Doona 面板靠它连核心）
+# Honk 是 dae 的 Rust + eBPF 重写，语法同源，用之前注意四点：
+#   1. 本文件是单文件用法，global / experimental 直接写在末尾；
+#      也可以拆到 system.dae 用 include 引入，两种写法都支持
+#   2. dns.upstream 要显式绑出口（-> direct / -> Proxy）。不绑就按流量路由走，
+#      指向 127.0.0.1 这类地址时会被送进节点，解析直接失败
+#   3. native_api 段不能删，Doona 面板靠它连核心
 #   4. AI 按服务细分（OpenAI / Claude / Gemini / Muse），没有笼统的 AI 组
 #
 # 分流思路参考 qichiyuhub/rule 的 honk 配置：AI 站点逐个点名、Telegram 补 IP 段、
 # 订阅走 assets 直连拉取；DoT 封闭与 !dport(53, 853) 也来自那边。
 #
-# 本文件的基线取自 252 上实际在跑的配置（不是包里的出厂默认值），
-# 它比出厂默认多了：pname 规则、广告拦截、google-cn / 国服游戏直连、
+# 本文件比包里出厂默认多了：pname 规则、广告拦截、google-cn / 国服游戏直连、
 # 带 interval + route 的订阅写法。
 #
 # 三个必须确认的地方：
-#   1. subscription 换成你的订阅（只支持 v2ray/URL 格式）
-#   2. system.dae 里的 lan_interface（x86 软路由一般是 br-lan）
+#   1. subscription 换成你的订阅（链接列表 / Clash YAML / sing-box JSON，自动识别）
+#   2. global 段里的 lan_interface（x86 软路由一般是 br-lan）
 #   3. group 里的地区正则，改成你节点名里真实出现的关键字
 #
 # 组名只能用英文和数字。
@@ -57,7 +58,10 @@ assets {
 # }
 
 # ---------------- 策略组 ----------------
-# policy 可选：min_moving_avg（移动平均延迟最低，推荐）/ min_avg10 / min / random / fixed(n)
+# policy 可选：min_moving_avg / min_avg10 / min_last_delay（延迟最低一族，推荐）、
+#   select（面板手动选）、fallback（按声明顺序取第一个存活）、
+#   loadbalance（轮询）、score（按实际连接质量评分）
+# 拼错名字不会报错，会静默退化成 select
 group {
     Proxy {
         filter: name(regex: '🇭🇰|HK|hk|香港|港|HongKong') && !name(regex: '排除')
@@ -254,9 +258,9 @@ experimental {
     # Doona 面板靠这个 native_api 连核心，默认端口 9527（和 LuCI 设置一致）
     native_api {
         enabled: true
-        # 只监听本机：最安全，但要用 SSH 端口转发才能开面板
-        # 想从局域网直接开面板就改成路由器的 LAN 地址，例如 252 上是
-        #   listen: '192.168.3.252:9527'
+        # 只监听本机：最安全，要用面板就走 SSH 端口转发
+        # 想从局域网直接开面板就改成路由器的 LAN 地址，例如
+        #   listen: '192.168.1.1:9527'
         listen: '127.0.0.1:9527'
         password_auth: true
         allow_anonymous_loopback: false
