@@ -258,10 +258,9 @@ experimental {
     # Doona 面板靠这个 native_api 连核心，默认端口 9527（和 LuCI 设置一致）
     native_api {
         enabled: true
-        # 只监听本机：最安全，要用面板就走 SSH 端口转发
-        # 想从局域网直接开面板就改成路由器的 LAN 地址，例如
-        #   listen: '192.168.1.1:9527'
-        listen: '127.0.0.1:9527'
+        # 监听所有网卡（含 WAN）：局域网/公网都能开面板。
+        # 公网可达时务必用强密码，并建议在防火墙限制来源 IP。
+        listen: '0.0.0.0:9527'
         password_auth: true
         allow_anonymous_loopback: false
         config_write: true
