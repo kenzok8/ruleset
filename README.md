@@ -44,16 +44,16 @@ icon/       策略组图标
 引用地址（把 `main` 换成其他分支即切换）：
 
 ```
-https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/Direct.list
-https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/ProxyLite.list
-https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/AI.list
-https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/Muse.list
-https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/ApplePush.list
-https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/FakeIPFilter-CN.list
-https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/FakeIPFilter-NotCN.list
+https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Direct.list
+https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/ProxyLite.list
+https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/AI.list
+https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Muse.list
+https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/ApplePush.list
+https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/FakeIPFilter-CN.list
+https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/FakeIPFilter-NotCN.list
 ```
 
-> `raw.githubusercontent.com` 被墙时，前缀换成 `https://cdn.jsdelivr.net/gh/kenzok78/ruleset@main/`。
+> `raw.githubusercontent.com` 被墙时，前缀换成 `https://cdn.jsdelivr.net/gh/kenzok8/ruleset@main/`。
 
 ---
 
@@ -89,7 +89,7 @@ https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/FakeIPFilter-NotCN.
 - 国家旗帜：来自 [lipis/flag-icons](https://github.com/lipis/flag-icons)（MIT）
 - 通用图标（rocket / direct / home / globe / fish / auto / all / bell / film）：本仓库自绘
 
-加图标就是加一行 `icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/<名字>.svg"`。
+加图标就是加一行 `icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/<名字>.svg"`。
 
 ---
 

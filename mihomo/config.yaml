@@ -123,51 +123,51 @@ dns:
 # ---------------- 策略组 ----------------
 proxy-groups:
   # --- 总控 ---
-  - {name: 🚀 节点选择, type: select, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/rocket.svg", proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 新加坡自动, ♻️ 集合自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 新加坡节点, 🇺🇳 集合节点, 🌍 全部节点, 🌐 直连]}
+  - {name: 🚀 节点选择, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/rocket.svg", proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 新加坡自动, ♻️ 集合自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 新加坡节点, 🇺🇳 集合节点, 🌍 全部节点, 🌐 直连]}
 
   # --- AI：每家单独一组，互不干扰 ---
-  - {name: 🔮 OpenAI, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/openai.svg"}
-  - {name: 🧠 Claude, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/claude.svg"}
-  - {name: 🤖 Gemini, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/gemini.svg"}
-  - {name: ✨ Muse, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/muse.svg"}
+  - {name: 🔮 OpenAI, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/openai.svg"}
+  - {name: 🧠 Claude, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/claude.svg"}
+  - {name: 🤖 Gemini, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/gemini.svg"}
+  - {name: ✨ Muse, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/muse.svg"}
   - {name: 🪄 AI 其他, <<: *pr}
 
   # --- 常用平台 ---
-  - {name: ▶️ YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/youtube.svg"}
-  - {name: 🔍 Google, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/google.svg"}
-  - {name: 🐦 Twitter, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/x.svg"}
-  - {name: 📦 GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/github.svg"}
-  - {name: 🪟 Microsoft, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/microsoft.svg"}
+  - {name: ▶️ YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/youtube.svg"}
+  - {name: 🔍 Google, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/google.svg"}
+  - {name: 🐦 Twitter, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/x.svg"}
+  - {name: 📦 GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/github.svg"}
+  - {name: 🪟 Microsoft, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/microsoft.svg"}
   - {name: 🐬 OneDrive, <<: *pr}
-  - {name: 🎵 TikTok, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/tiktok.svg"}
-  - {name: 📺 Netflix, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/netflix.svg"}
-  - {name: 🎬 流媒体, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/film.svg"}
-  - {name: 💳 PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/paypal.svg"}
-  - {name: 📲 电报消息, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/telegram.svg"}
+  - {name: 🎵 TikTok, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/tiktok.svg"}
+  - {name: 📺 Netflix, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/netflix.svg"}
+  - {name: 🎬 流媒体, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/film.svg"}
+  - {name: 💳 PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/paypal.svg"}
+  - {name: 📲 电报消息, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/telegram.svg"}
 
   # --- 特殊 ---
-  - {name: 🍏 Apple, type: select, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/apple.svg", proxies: [🌐 直连, 🚀 节点选择]}
-  - {name: 📣 APNs 推送, type: select, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/bell.svg", proxies: [🚀 节点选择, ♻️ 自动选择, 🌐 直连]}
-  - {name: 🎯 全球直连, type: select, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/direct.svg", proxies: [🌐 直连, 🚀 节点选择]}
-  - {name: 🏠 私有网络, type: select, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/home.svg", proxies: [🌐 直连, 🚀 节点选择]}
-  - {name: 🌐 非中国, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/globe.svg"}
-  - {name: 🐟 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/fish.svg"}
+  - {name: 🍏 Apple, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/apple.svg", proxies: [🌐 直连, 🚀 节点选择]}
+  - {name: 📣 APNs 推送, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/bell.svg", proxies: [🚀 节点选择, ♻️ 自动选择, 🌐 直连]}
+  - {name: 🎯 全球直连, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/direct.svg", proxies: [🌐 直连, 🚀 节点选择]}
+  - {name: 🏠 私有网络, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/home.svg", proxies: [🌐 直连, 🚀 节点选择]}
+  - {name: 🌐 非中国, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/globe.svg"}
+  - {name: 🐟 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/fish.svg"}
 
   # --- 地区节点 ---
-  - {name: 🇭🇰 香港节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/flag-hk.svg", filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇯🇵 日本节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/flag-jp.svg", filter: "(?i)日|jp|japan"}
-  - {name: 🇺🇲 美国节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/flag-us.svg", filter: "(?i)美|us|unitedstates|united states"}
-  - {name: 🇸🇬 新加坡节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/flag-sg.svg", filter: "(?i)新加坡|坡|狮城|sg|singapore"}
-  - {name: 🇺🇳 集合节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/flag-tw.svg", filter: "(?i)台|tw|taiwan|韩|kr|korea"}
+  - {name: 🇭🇰 香港节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-hk.svg", filter: "(?i)港|hk|hongkong|hong kong"}
+  - {name: 🇯🇵 日本节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-jp.svg", filter: "(?i)日|jp|japan"}
+  - {name: 🇺🇲 美国节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-us.svg", filter: "(?i)美|us|unitedstates|united states"}
+  - {name: 🇸🇬 新加坡节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-sg.svg", filter: "(?i)新加坡|坡|狮城|sg|singapore"}
+  - {name: 🇺🇳 集合节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-tw.svg", filter: "(?i)台|tw|taiwan|韩|kr|korea"}
 
   # --- 自动测速 ---
-  - {name: ♻️ 香港自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
-  - {name: ♻️ 日本自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$"}
-  - {name: ♻️ 美国自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
-  - {name: ♻️ 新加坡自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$"}
-  - {name: ♻️ 集合自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?i)台|tw|taiwan|韩|kr|korea"}
-  - {name: ♻️ 自动选择, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300}
-  - {name: 🌍 全部节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok78/ruleset/main/icon/all.svg"}
+  - {name: ♻️ 香港自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
+  - {name: ♻️ 日本自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$"}
+  - {name: ♻️ 美国自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
+  - {name: ♻️ 新加坡自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$"}
+  - {name: ♻️ 集合自动, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?i)台|tw|taiwan|韩|kr|korea"}
+  - {name: ♻️ 自动选择, type: url-test, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300}
+  - {name: 🌍 全部节点, type: select, use: *all, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/all.svg"}
 
 # ---------------- 分流规则 ----------------
 # 顺序即优先级，越上面越优先。改动前先看注释。
@@ -223,19 +223,19 @@ rules:
 # ---------------- 规则集 ----------------
 rule-providers:
   # 本项目维护（改完推到 main 就生效）
-  direct1: { <<: *class, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/Direct.list" }
-  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/ProxyLite.list" }
-  ai_domain: { <<: *class, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/AI.list" }
-  apple_push: { <<: *class, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/ApplePush.list" }
-  fakeipfilter_cn: { <<: *domain_text, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/FakeIPFilter-CN.list" }
-  fakeipfilter_not_cn: { <<: *domain_text, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/FakeIPFilter-NotCN.list" }
+  direct1: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Direct.list" }
+  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/ProxyLite.list" }
+  ai_domain: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/AI.list" }
+  apple_push: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/ApplePush.list" }
+  fakeipfilter_cn: { <<: *domain_text, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/FakeIPFilter-CN.list" }
+  fakeipfilter_not_cn: { <<: *domain_text, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/FakeIPFilter-NotCN.list" }
 
   # 上游 MetaCubeX/meta-rules-dat
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs" }
   openai_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs" }
   claude_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.mrs" }
   gemini_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.mrs" }
-  muse_domain: { <<: *class, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/Muse.list" }
+  muse_domain: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Muse.list" }
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs" }
   google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs" }
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs" }

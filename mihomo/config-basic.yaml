@@ -131,10 +131,10 @@ rule-anchor:
 
 rule-providers:
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs" }
-  direct1: { <<: *class, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/Direct.list" }
-  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/ProxyLite.list" }
-  fakeipfilter_cn: { <<: *domain_text, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/FakeIPFilter-CN.list" }
-  fakeipfilter_not_cn: { <<: *domain_text, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/FakeIPFilter-NotCN.list" }
+  direct1: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Direct.list" }
+  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/ProxyLite.list" }
+  fakeipfilter_cn: { <<: *domain_text, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/FakeIPFilter-CN.list" }
+  fakeipfilter_not_cn: { <<: *domain_text, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/FakeIPFilter-NotCN.list" }
   openai_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs" }
   claude_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.mrs" }
   gemini_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.mrs" }
@@ -145,7 +145,7 @@ rule-providers:
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs" }
   paypal_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/paypal.mrs" }
   microsoft_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs" }
-  apple_push: { <<: *class, url: "https://raw.githubusercontent.com/kenzok78/ruleset/main/rule/ApplePush.list" }
+  apple_push: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/ApplePush.list" }
   apple_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple-cn.mrs" }
   tiktok_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs" }
   geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs" }
