@@ -2,8 +2,13 @@
 # Honk 配置模板（AI 分组 + 国内外 DNS 分流）
 # ============================================================
 # 本文件包含订阅、策略组、DNS、分流和系统设置，也可拆分到 system.dae。
-# 订阅支持链接列表、Clash YAML、sing-box JSON；SSR 不支持。
-# 使用前确认订阅地址、global.lan_interface 和节点地区名称。
+# 三个必须确认的地方：
+#   1. subscription 里的链接：确认订阅地址正确；Honk 自动识别链接列表、Clash YAML 和 sing-box JSON，不支持 SSR。
+#   2. global 里的 lan_interface：确认与设备实际使用的 LAN 网卡一致（x86 软路由一般是 br-lan，用 ip a 确认）。
+#   3. group 里的地区正则：改成订阅节点名中实际出现的地区关键字。
+# 注意：Honk 组名只支持英文和数字，不能用中文和 emoji。
+# 分流思路参考 qichiyuhub/rule 的 honk 配置：AI 站点逐个点名、Telegram 补 IP 段，
+# 订阅直连拉取，并保留 DoT 与 DNS 分流规则。
 # ============================================================
 
 # ---------------- 订阅 ----------------
@@ -33,6 +38,7 @@ assets {
 # ---------------- 策略组 ----------------
 # policy 支持 min_moving_avg、min_avg10、min_last_delay、select、fallback、loadbalance、score。
 # 无效名称会回退到 select。
+# Honk 专用的 final 指定组内回退出口；纯 dae 不支持此字段。
 group {
     Proxy {
         filter: name(regex: '🇭🇰|HK|hk|香港|港|HongKong') && !name(regex: '排除')

@@ -9,16 +9,18 @@
 #   OpenWrt 上装 v2ray-geosite + v2ray-geoip 即可，
 #   luci-app-daede 的「更新 geo」会下载 Loyalsoldier 的版本。
 #
-# 三个必须改的地方：
-#   1. subscription 里的 sub 换成你的订阅（只支持 v2ray/URL 格式，不支持 mihomo 格式）
-#   2. global 里的 lan_interface（x86 软路由一般是 br-lan，用 ip a 确认）
-#   3. group 里的地区正则，改成你机场节点命名里真实出现的关键字
+# 三个必须确认的地方：
+#   1. subscription 里的 sub：确认订阅 URL 返回 dae 支持的 URI 节点列表（含 SSR；不支持 Mihomo YAML）
+#   2. global 里的 lan_interface：确认与设备实际使用的 LAN 网卡一致（x86 软路由一般是 br-lan，用 ip a 确认）
+#   3. group 里的地区正则：改成订阅节点名中实际出现的地区关键字
+# 分流思路参考 qichiyuhub/rule 的 dae 配置，按服务细分 AI 分组，
+# 并补充 Telegram IP 分流与国内域名直连。
 #
 # 注意：dae 的组名只支持英文和数字，不能用中文和 emoji。
 # ============================================================
 
 # ---------------- 订阅 ----------------
-# 只支持 v2ray / URL 格式的订阅链接。
+# 订阅需返回 dae 支持的节点 URI（含 SSR）；不支持 mihomo YAML。
 # 如果你的机场只给 mihomo 格式，用 sub-store 转一下，或者改用下面的 node 手写。
 subscription {
     sub: 'https://example.com/sub'
@@ -39,7 +41,8 @@ subscription {
 #   random          随机
 #   fixed(n)        固定组内第 n 个（从 0 开始数）
 #
-# filter 里的 `!name(regex: '排除')` 用来把「剩余流量 / 到期时间」这类假节点剔掉。
+# `!name(regex: '排除')` 只排除节点名含“排除”的节点。
+# 地区组无匹配节点时不会自动回退到 Final，需确认地区关键字与节点名相符。
 group {
     # 总出口
     Proxy {
@@ -120,17 +123,18 @@ group {
 
 # ---------------- DNS ----------------
 dns {
+    # local 指公共 Ali DNS，不是路由器 dnsmasq；LAN 私有域名可能无法解析。
     upstream {
         remote: 'https://8.8.8.8/dns-query'
         local: 'https://223.5.5.5/dns-query'
     }
     routing {
         request {
-            # 关掉 HTTPS/SVCB 与 AAAA，简化解析链路
+            # 禁用 HTTPS/SVCB 与 AAAA 记录查询。
             qtype(https, svcb) -> reject
             qtype(aaaa) -> reject
 
-            # Google Play 商店靠这两个后缀，必须走国外 DNS，否则商店更新失败
+            # Google Play 相关域名使用国外 DNS。
             qname(suffix: googleapis.cn, suffix: xn--ngstr-lra8j.com) -> remote
 
             # 国内域名走国内 DNS
@@ -149,14 +153,17 @@ dns {
 
 # ---------------- 分流 ----------------
 routing {
+    # DNS 上游连接显式选出口，避免落入其他分流规则。
+    dip(223.5.5.5) && l4proto(tcp) && dport(443) -> direct
+    dip(8.8.8.8) && l4proto(tcp) && dport(443) -> Proxy
+
     # 组播地址不代理
     dip(224.0.0.0/3, 'ff00::/8') -> direct
     # 封掉 DoT，防止 App 绕过 dae 自己加密解析
     dport(853) -> block
     # 局域网地址直连
     dip(geoip: private) -> direct
-    # 拦掉 QUIC（443/UDP），强制回落 TCP，让按域名分流真正生效
-    # 不想用就注释掉这行
+    # 禁用 QUIC（443/UDP）；需要 HTTP/3 时可删除此规则。
     l4proto(udp) && dport(443) -> block
 
     # --- AI：每家一个组，不用笼统的 AI 组 ---
@@ -165,10 +172,9 @@ routing {
            suffix: oaistatic.com, suffix: oaiusercontent.com) -> OpenAI
     # Claude / Anthropic
     domain(geosite: anthropic, suffix: claude.ai, suffix: anthropic.com) -> Claude
-    # Gemini 与 Google 家的 AI 页面（NotebookLM 归 Gemini）
+    # Gemini、NotebookLM 与部分 Google AI 页面。
     domain(geosite: google-gemini, suffix: gemini.google.com,
-           suffix: notebooklm.google) -> Gemini
-    # muse.ai 是 Meta 旗下产品，geosite 里还没有这个 code，所以手写域名
+           suffix: notebooklm.google, suffix: withgoogle.com) -> Gemini
     domain(suffix: muse.ai) -> Muse
     # 其余 AI 站（Perplexity、Poe、Midjourney 等）不单独立组，归到 Proxy
     domain(geosite: category-ai-!cn) -> Proxy
@@ -184,6 +190,7 @@ routing {
     domain(geosite: apple@cn) -> direct
     domain(geosite: apple) -> Apple
     domain(geosite: telegram) -> Telegram
+    dip(geoip: telegram) -> Telegram
     domain(geosite: tiktok) -> TikTok
     domain(geosite: netflix) -> Netflix
     domain(geosite: paypal, geosite: binance, geosite: okx, geosite: category-cryptocurrency) -> Wallet
@@ -191,8 +198,8 @@ routing {
     domain(geosite: steam) -> Steam
 
     # --- 兜底 ---
-    # 注意：国内 IP 兜底放在域名规则之后。
-    # 如果放到最上面，国外域名解析到国内 CDN 节点时会被误判成直连。
+    # 具体服务规则优先，其余国内域名和 IP 直连。
+    domain(geosite: cn) -> direct
     dip(geoip: cn) -> direct
     domain(geosite: geolocation-!cn) -> Proxy
     fallback: Final
@@ -206,7 +213,7 @@ global {
     wan_interface: auto
     auto_config_kernel_parameter: true
     so_mark_from_dae: 0
-    # domain 模式：交给 dae 按域名决定出口，不需要等 DNS 解析完
+    # 代理连接可使用嗅探域名；域名分流仍依赖 dae 接管 DNS。
     dial_mode: domain
     tls_implementation: utls
     bootstrap_resolver: '119.29.29.29:53'
