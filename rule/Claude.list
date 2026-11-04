@@ -1,0 +1,47 @@
+# Claude / Anthropic（classical text）
+#
+# 替代 geosite:anthropic：自有域名 + 它依赖的第三方域名 + 自有网段都放这里，
+# 让 Claude Code / claude.ai 的流量落进同一个策略组。
+# 通用第三方（auth0 / intercom / sentry / statsig）留在 AI.list，两边都挂即全覆盖。
+#
+# 行为：classical，format: text
+
+# 自有域名
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,anthropic.team
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claude.app
+DOMAIN-SUFFIX,claude.dev
+DOMAIN-SUFFIX,claude.new
+DOMAIN-SUFFIX,claude.site
+DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,claudeacademy.com
+DOMAIN-SUFFIX,claudemcpclient.com
+DOMAIN-SUFFIX,claudemcpcontent.com
+DOMAIN-SUFFIX,claudepages.dev
+DOMAIN-SUFFIX,claudestudio.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN-SUFFIX,chatbotclaude.com
+DOMAIN-SUFFIX,ant.dev
+DOMAIN-SUFFIX,antspace.dev
+
+# 新域名兜底
+DOMAIN-KEYWORD,anthropic
+DOMAIN-KEYWORD,claude
+
+# CDN / 认证 / 内容，后缀不在 anthropic.com 下
+DOMAIN,servd-anthropic-website.b-cdn.net
+DOMAIN,anthropic.com.cdn.cloudflare.net
+DOMAIN,anthropic.auth0.com
+DOMAIN,anthropic-com.ghost.io
+
+# 监控 / 反欺诈，Claude Code 会上报，出口必须和主流量一致
+DOMAIN-SUFFIX,datadoghq.com
+DOMAIN-SUFFIX,datadoghq.eu
+DOMAIN-SUFFIX,sift.com
+DOMAIN-SUFFIX,siftscience.com
+
+# 自有网段兜底（ARIN 登记：NET-160-79-104-0-1 / NET6-2607-6BC0-1）
+IP-CIDR,160.79.104.0/21,no-resolve
+IP-CIDR6,2607:6bc0::/32,no-resolve

@@ -174,8 +174,15 @@ routing {
     # --- AI ---
     domain(geosite: openai, suffix: openai.com, suffix: chatgpt.com,
            suffix: oaistatic.com, suffix: oaiusercontent.com) -> OpenAI
-    # Claude
-    domain(geosite: anthropic, suffix: claude.ai, suffix: anthropic.com) -> Claude
+    # Claude（datadog / sift 这类上报域名 geosite 里没有）
+    domain(geosite: anthropic, suffix: claude.ai, suffix: anthropic.com,
+           suffix: datadoghq.com, suffix: datadoghq.eu,
+           suffix: sift.com, suffix: siftscience.com,
+           full: servd-anthropic-website.b-cdn.net,
+           full: anthropic.com.cdn.cloudflare.net,
+           full: anthropic.auth0.com,
+           full: anthropic-com.ghost.io) -> Claude
+    dip(160.79.104.0/21, '2607:6bc0::/32') -> Claude
     # Gemini 和 NotebookLM
     domain(geosite: google-gemini, suffix: gemini.google.com,
            suffix: notebooklm.google) -> Gemini

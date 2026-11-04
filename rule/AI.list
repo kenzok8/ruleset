@@ -1,8 +1,8 @@
 # AI 补充名单（OpenAI / Claude / Gemini 之外的 AI 站）
 #
-# 主流的几家已经由 mrs 覆盖，走各自分组：
+# 主流的几家已经由 mrs / 自有名单覆盖，走各自分组：
 #   OpenAI  -> geo/geosite/openai.mrs
-#   Claude  -> geo/geosite/anthropic.mrs
+#   Claude  -> rule/Claude.list
 #   Gemini  -> geo/geosite/google-gemini.mrs
 #
 # 本文件负责「其余 AI 站」：Perplexity / Grok / Copilot / HuggingFace / Poe 等，
@@ -64,12 +64,6 @@ DOMAIN-SUFFIX,intercom.io
 DOMAIN-SUFFIX,intercomcdn.com
 DOMAIN-SUFFIX,sentry.io
 DOMAIN-SUFFIX,stripe.com
-
-# ============ Claude 附属（mrs 遗漏时兜底） ============
-DOMAIN-KEYWORD,anthropic
-DOMAIN-KEYWORD,claude
-DOMAIN-SUFFIX,claude.ai
-DOMAIN-SUFFIX,anthropic.com
 
 # ============ Gemini 附属（mrs 遗漏时兜底） ============
 DOMAIN-SUFFIX,bard.google.com

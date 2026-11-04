@@ -260,7 +260,7 @@ rule-providers:
   # 上游 MetaCubeX/meta-rules-dat
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs" }
   openai_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs" }
-  claude_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/anthropic.mrs" }
+  claude_domain: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Claude.list" }
   gemini_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.mrs" }
   muse_domain: { <<: *class, url: "https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Muse.list" }
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs" }

@@ -34,6 +34,8 @@ icon/       策略组图标
 | `rule/Direct.list` | classical | 520 条：阿里 / 字节 / 腾讯 / B 站 / 网易等国内大厂域名 | 直连补充，防国内站走代理变慢或触发风控 |
 | `rule/ProxyLite.list` | classical | 26 条：Plex、国外 DNS 服务器 IP | 代理补充，Plex 远程访问和 DoH 必须走代理 |
 | `rule/AI.list` | classical | Perplexity / Grok / Copilot / HuggingFace / Poe / Cursor 等 | AI 兜底组。OpenAI / Claude / Gemini / Muse 各自有独立名单，这份管其余 AI 站 |
+| `rule/Claude.list` | classical | Anthropic / Claude 自有域名 + 依赖的第三方域名 + 自有网段 | Claude 组。替代 `geosite:anthropic`，把 datadog / sift 这类漏网的第三方也拽进同一出口 |
+| `rule/Claude.json` | sing-box source | 与 Claude.list 同一套规则 | 给 sing-box 用（`format: source`）。改名单时两个文件一起改 |
 | `rule/Muse.list` | classical | `muse.ai`（Meta 旗下的个人 AI Agent） | Muse 组。geosite 里没有 muse 这个 code，只能手写域名 |
 | `rule/ApplePush.list` | classical | APNs 推送域名 + Apple 推送 IP 段 | 独立推送组，国内 iPhone 建议 APNs 走代理 |
 | `rule/FakeIPFilter-CN.list` | domain text | 局域网、国内 NTP、运营商一键登录、音乐/游戏/Apple 更新 CDN | fake-ip 白名单（国内段），命中返回真实 IP |
@@ -47,6 +49,8 @@ icon/       策略组图标
 https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Direct.list
 https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/ProxyLite.list
 https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/AI.list
+https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Claude.list
+https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Claude.json
 https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/Muse.list
 https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/ApplePush.list
 https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/FakeIPFilter-CN.list
@@ -97,7 +101,7 @@ https://raw.githubusercontent.com/kenzok8/ruleset/main/rule/FakeIPFilter-NotCN.l
 
 | 文件 | 说明 |
 |------|------|
-| `config.dae` | 完整版。AI 分 OpenAI / Claude / Gemini / Muse 四组（Muse 用 `domain(suffix: muse.ai)` 手写，geosite 里没这个 code），YouTube / Google / Telegram / Steam 等平台各自分组，国内外 DNS 分流 |
+| `config.dae` | 完整版。AI 分 OpenAI / Claude / Gemini / Muse 四组（Muse 用 `domain(suffix: muse.ai)` 手写，geosite 里没这个 code；Claude 组另补了 datadog / sift 等第三方域名和 Anthropic 网段兜底），YouTube / Google / Telegram / Steam 等平台各自分组，国内外 DNS 分流 |
 | `config.min.dae` | 精简版。只有一个 Proxy 组，先跑通再说 |
 
 ### 依赖的 geo 数据
@@ -145,7 +149,7 @@ Honk 是 dae 的 Rust + eBPF 重写，语法同源，差异见 [honk/README.md](
 
 1.13 之后官方内核支持 `proxy-providers` 之前，客户端配置要靠 sub-store 远程脚本填充，脚本地址见各版本目录里的 `*-substore-scripts.md`。
 
-注意 sing-box 用的是 `.srs` 二进制规则集，**不能**直接吃 `rule/*.list`。这里的配置全部指向上游 MetaCubeX 的 `sing` 分支；要用自己的名单得先转成 srs。
+注意 sing-box 只吃 `.srs` 二进制或 source 格式的 JSON，**不能**直接吃 `rule/*.list`。Claude 组已改用本仓库的 `rule/Claude.json`（`format: source`），其余规则集仍指向上游 MetaCubeX 的 `sing` 分支。
 
 ---
 

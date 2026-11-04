@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain": [
+        "servd-anthropic-website.b-cdn.net",
+        "anthropic.com.cdn.cloudflare.net",
+        "anthropic.auth0.com",
+        "anthropic-com.ghost.io"
+      ],
+      "domain_suffix": [
+        "anthropic.com",
+        "anthropic.team",
+        "claude.ai",
+        "claude.com",
+        "claude.app",
+        "claude.dev",
+        "claude.new",
+        "claude.site",
+        "clau.de",
+        "claudeacademy.com",
+        "claudemcpclient.com",
+        "claudemcpcontent.com",
+        "claudepages.dev",
+        "claudestudio.com",
+        "claudeusercontent.com",
+        "chatbotclaude.com",
+        "ant.dev",
+        "antspace.dev",
+        "datadoghq.com",
+        "datadoghq.eu",
+        "sift.com",
+        "siftscience.com"
+      ],
+      "domain_keyword": [
+        "anthropic",
+        "claude"
+      ],
+      "ip_cidr": [
+        "160.79.104.0/21",
+        "2607:6bc0::/32"
+      ]
+    }
+  ]
+}
