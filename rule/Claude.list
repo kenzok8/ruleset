@@ -2,7 +2,7 @@
 #
 # 替代 geosite:anthropic：自有域名 + 它依赖的第三方域名 + 自有网段都放这里，
 # 让 Claude Code / claude.ai 的流量落进同一个策略组。
-# 通用第三方（auth0 / intercom / sentry / statsig）留在 AI.list，两边都挂即全覆盖。
+# 通用第三方仍在 AI.list；已确认的 Claude 端点在本文件优先匹配，避免分到其他策略组。
 #
 # 行为：classical，format: text
 
@@ -36,12 +36,16 @@ DOMAIN,anthropic.com.cdn.cloudflare.net
 DOMAIN,anthropic.auth0.com
 DOMAIN,anthropic-com.ghost.io
 
-# 监控 / 反欺诈，Claude Code 会上报，出口必须和主流量一致
+# 第三方监控 / 反欺诈；共享后缀也可能匹配其他应用
 DOMAIN-SUFFIX,datadoghq.com
 DOMAIN-SUFFIX,datadoghq.eu
+DOMAIN,browser-intake-us5-datadoghq.com
+DOMAIN,o1158394.ingest.us.sentry.io
 DOMAIN-SUFFIX,sift.com
 DOMAIN-SUFFIX,siftscience.com
 
-# 自有网段兜底（ARIN 登记：NET-160-79-104-0-1 / NET6-2607-6BC0-1）
-IP-CIDR,160.79.104.0/21,no-resolve
-IP-CIDR6,2607:6bc0::/32,no-resolve
+# API / Console 官方入站网段；网页和 CDN 仍以域名匹配为主
+# https://platform.claude.com/docs/en/api/ip-addresses
+IP-CIDR,160.79.104.0/23,no-resolve
+IP-CIDR,153.61.224.0/22,no-resolve
+IP-CIDR6,2607:6bc0::/48,no-resolve

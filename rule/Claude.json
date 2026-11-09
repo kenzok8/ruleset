@@ -6,7 +6,9 @@
         "servd-anthropic-website.b-cdn.net",
         "anthropic.com.cdn.cloudflare.net",
         "anthropic.auth0.com",
-        "anthropic-com.ghost.io"
+        "anthropic-com.ghost.io",
+        "browser-intake-us5-datadoghq.com",
+        "o1158394.ingest.us.sentry.io"
       ],
       "domain_suffix": [
         "anthropic.com",
@@ -37,8 +39,9 @@
         "claude"
       ],
       "ip_cidr": [
-        "160.79.104.0/21",
-        "2607:6bc0::/32"
+        "160.79.104.0/23",
+        "153.61.224.0/22",
+        "2607:6bc0::/48"
       ]
     }
   ]
