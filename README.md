@@ -145,11 +145,25 @@ Honk 是 dae 的 Rust + eBPF 重写，语法同源，差异见 [honk/README.md](
 
 ## 五、sing-box / HomeProxy（`sing-box/`）
 
-官方内核 1.12 / 1.13 / 1.14 各版本的客户端配置，以及 HomeProxy 用的版本。
+要求 **sing-box 1.12 以上**。配置按 1.14 的新 DNS 写法、HTTP 客户端写法重写过，用 1.15 校验通过——旧版的 `use_all_providers` / `includes` 是转换器字段，原生内核从来就不认，已经去掉。
 
-1.13 之后官方内核支持 `proxy-providers` 之前，客户端配置要靠 sub-store 远程脚本填充，脚本地址见各版本目录里的 `*-substore-scripts.md`。
+| 文件 | 适合谁 | 入口 |
+|------|--------|------|
+| `config-tun.json` | 桌面 / 手机 TUN，自动接管系统路由 | TUN |
+| `config-tproxy.json` | OpenWrt 透明代理 | tproxy 7894 + mixed 7890 |
+| `config-mixed.json` | 只要端口，局域网共享 | mixed 7890 + socks 7891 |
 
-注意 sing-box 只吃 `.srs` 二进制或 source 格式的 JSON，**不能**直接吃 `rule/*.list`。Claude 组已改用本仓库的 `rule/Claude.json`（`format: source`），其余规则集仍指向上游 MetaCubeX 的 `sing` 分支。
+三份由 `gen.py` 生成：改规则 / 策略组 / DNS 只改 `gen.py`，在本目录跑 `python3 gen.py`，再用 `sing-box check -c config-tun.json` 校验。
+
+**节点是占位的**：`outbounds` 里 `REPLACE-HK`、`REPLACE-JP`、`REPLACE-US`、`REPLACE-SG` 四段换成自己的节点，地区分组和自动测速组会跟着生效。节点多的时候建议配合转换器生成。
+
+规则集全部直连下载（`http_clients` 指向 `direct`），避开「要先开代理才能下规则集」的死循环。国内直连 `raw.githubusercontent.com` 不通时，把 `gen.py` 里的 `MIRROR` 换成镜像前缀（比如 `https://ghfast.top/https://raw.githubusercontent.com`）再生成一遍。
+
+需要 fake-ip 时改 `gen.py` 的 `dns_block()`：`servers` 里加 `{"type": "fakeip", "tag": "fakeip", "inet4_range": "198.18.0.0/15"}`，`rules` 最前面加 `{"query_type": ["A", "AAAA"], "server": "fakeip"}`。
+
+注意 sing-box 只吃 `.srs` 二进制或 source 格式的 JSON，**不能**直接吃 `rule/*.list`。Claude 组用本仓库的 `rule/Claude.json`（`format: source`），其余规则集仍指向上游 MetaCubeX 的 `sing` 分支。
+
+`homeproxy` 和 `homeproxy无订阅自行添加.txt` 是 HomeProxy 插件的 UCI 配置，不是 sing-box 配置文件。
 
 ---
 

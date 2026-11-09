@@ -7,7 +7,7 @@
 # 用法：mihomo fake-ip-filter 里引用 `rule-set:fakeipfilter_not_cn`，
 #       同时可放进 nameserver-policy 指定国外 DNS。
 #
-# 来源：社区通用 fake-ip-filter 列表（sukkaw / ACL4SSR 衍生）+ kenzok78 自用补充
+# 来源：社区通用 fake-ip-filter 列表（sukkaw / ACL4SSR 衍生）+ kenzok8 自用补充
 
 # ============ 连通性探测 / 工具 ============
 cable.auth.com

@@ -10,10 +10,10 @@
 #       （OpenWrt 装 v2ray-geosite / v2ray-geoip，或 luci-app-daede 里点更新 geo）
 # ============================================================
 
-# 只支持 v2ray / URL 格式的订阅
-subscription {
-    sub: 'https://example.com/sub'
-}
+# 本模板不带订阅，自己按下面写法加一段；只支持 v2ray / URL 格式，不支持 Mihomo YAML。
+# subscription {
+#     sub: 'https://你的订阅地址'
+# }
 
 # 组名只能用英文
 group {

@@ -6,7 +6,7 @@
 #
 # 为什么要分国内 / 国外两份：国内域名用国内 DNS 解析更近，国外域名用国外 DNS 才准。
 #
-# 来源：社区通用 fake-ip-filter 列表（sukkaw / ACL4SSR 衍生）+ kenzok78 自用补充
+# 来源：社区通用 fake-ip-filter 列表（sukkaw / ACL4SSR 衍生）+ kenzok8 自用补充
 
 # ============ LAN / 私有域 ============
 localhost
