@@ -1,9 +1,9 @@
 # ============================================================
 # Honk 配置模板（AI 分组 + 国内外 DNS 分流）
 # ============================================================
-# 本文件包含订阅、策略组、DNS、分流和系统设置，也可拆分到 system.dae。
+# 本文件包含策略组、DNS、分流和系统设置，也可拆分到 system.dae。
 # 三个必须确认的地方：
-#   1. subscription 里的链接：确认订阅地址正确；Honk 自动识别链接列表、Clash YAML 和 sing-box JSON，不支持 SSR。
+#   1. 节点：自己加 subscription 或 node，一个都不能少，否则组里没有可选节点
 #   2. global 里的 lan_interface：确认与设备实际使用的 LAN 网卡一致（x86 软路由一般是 br-lan，用 ip a 确认）。
 #   3. group 里的地区正则：改成订阅节点名中实际出现的地区关键字。
 # 注意：Honk 组名只支持英文和数字，不能用中文和 emoji。
@@ -12,13 +12,14 @@
 # ============================================================
 
 # ---------------- 订阅 ----------------
-# interval 设置刷新间隔，route 设置订阅下载出口。
-subscription {
-    kenzo_sub: 'https://example.com/sub' {
-        interval: 86400s
-        route: direct
-    }
-}
+# 本模板不带订阅，自己按下面的写法加一段；interval 是刷新间隔，route 是下载出口。
+# Honk 自动识别链接列表、Clash YAML 和 sing-box JSON，不支持 SSR。
+# subscription {
+#     my_sub: 'https://你的订阅地址' {
+#         interval: 86400s
+#         route: direct
+#     }
+# }
 
 # 订阅直连下载，Geo 数据使用系统安装的 v2ray-geosite / v2ray-geoip。
 assets {

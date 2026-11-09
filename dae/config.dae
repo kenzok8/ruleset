@@ -10,7 +10,7 @@
 #   luci-app-daede 的「更新 geo」会下载 Loyalsoldier 的版本。
 #
 # 三个必须确认的地方：
-#   1. subscription 里的 sub：确认订阅 URL 返回 dae 支持的 URI 节点列表（含 SSR；不支持 Mihomo YAML）
+#   1. 节点：自己加 subscription 或 node，一个都不能少，否则组里没有可选节点
 #   2. global 里的 lan_interface：确认与设备实际使用的 LAN 网卡一致（x86 软路由一般是 br-lan，用 ip a 确认）
 #   3. group 里的地区正则：改成订阅节点名中实际出现的地区关键字
 # 分流思路参考 qichiyuhub/rule 的 dae 配置，按服务细分 AI 分组，
@@ -20,13 +20,13 @@
 # ============================================================
 
 # ---------------- 订阅 ----------------
-# 订阅需返回 dae 支持的节点 URI（含 SSR）；不支持 mihomo YAML。
-# 如果你的机场只给 mihomo 格式，用 sub-store 转一下，或者改用下面的 node 手写。
-subscription {
-    sub: 'https://example.com/sub'
-}
+# 本模板不带订阅，自己按下面的写法加一段；订阅需返回 dae 支持的节点 URI（含 SSR），
+# 不支持 mihomo YAML。如果机场只给 mihomo 格式，用 sub-store 转一下，或者改用下面的 node 手写。
+# subscription {
+#     sub: 'https://你的订阅地址'
+# }
 
-# 手写节点示例（不想用订阅就打开这段）：
+# 手写节点示例（不想用订阅就用这段）：
 # node {
 #     my_vps: 'hysteria2://密码@vps.example.com:443/?sni=vps.example.com'
 #     # 链式代理：落地 -> 前置
