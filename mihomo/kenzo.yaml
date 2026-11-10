@@ -131,11 +131,15 @@ proxy-groups:
   - {name: ♻️ 美国自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
   - {name: ♻️ 新加坡自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(新|SG|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$"}
   - {name: ♻️ 集合自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?i)台|tw|taiwan|韩|kr|korea"}
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, exclude-type: "Direct", icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300}
   - {name: 🌍 全部节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/all.svg"}
 
 # ---------------- 分流规则 ----------------
 rules:
+  # 按源 IP 固定出口，适合多设备分流或防 WebRTC 泄漏：
+  # - "SRC-IP-CIDR,192.168.1.10/32,🚀 节点选择"
+  # 目标组里需有支持 UDP 的节点（Hysteria2 / TUIC），ShadowsocksR 不支持 UDP
+
   # 1. 局域网
   - RULE-SET,private_ip,🏠 私有网络,no-resolve
   - RULE-SET,private_domain,🏠 私有网络

@@ -94,7 +94,7 @@ proxy-groups:
   - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
   - {name: ♻️ 新加坡自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(新|SG|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$"}
   - {name: ♻️ 集合自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)台|tw|taiwan|韩|kr|korea"}
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, exclude-type: "Direct", tolerance: 20, interval: 300}
   - {name: 🌍 全部节点, type: select, include-all: true}
 
 rules:
