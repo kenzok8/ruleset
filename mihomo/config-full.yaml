@@ -155,7 +155,7 @@ proxy-groups:
   - {name: 🧠 Claude, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/claude.svg"}
   - {name: 🤖 Gemini, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/gemini.svg"}
   - {name: ✨ Muse, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/muse.svg"}
-  - {name: 🪄 AI 其他, <<: *pr}
+  - {name: 🪄 AI 其他, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/ai.svg"}
 
   # --- 常用平台 ---
   - {name: ▶️ YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/youtube.svg"}
