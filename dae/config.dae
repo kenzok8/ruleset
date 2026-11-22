@@ -50,6 +50,12 @@ group {
         policy: min_moving_avg
     }
 
+    # 台湾节点独立组：默认无规则引用，需要时把规则指到 Taiwan
+    Taiwan {
+        filter: name(regex: '🇹🇼|TW|tw|台湾|台灣|Taiwan') && !name(regex: '排除')
+        policy: min_moving_avg
+    }
+
     # --- AI：每家单独一组，按需要换地区 ---
     OpenAI {
         filter: name(regex: '🇸🇬|SG|sg|新加坡|狮城|Singapore') && !name(regex: '排除')

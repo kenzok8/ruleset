@@ -81,7 +81,7 @@ dns:
 
 # ---------------- 锚点 ----------------
 rule-anchor:
-  pr: &pr {type: select, proxies: [🚀 节点选择, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 新加坡自动, ♻️ 集合自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 新加坡节点, 🇺🇳 集合节点, 🌍 全部节点, 🌐 直连]}
+  pr: &pr {type: select, proxies: [🚀 节点选择, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 新加坡自动, ♻️ 台湾自动, ♻️ 韩国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 新加坡节点, 🇹🇼 台湾节点, 🇰🇷 韩国节点, 🌍 全部节点, 🌐 直连]}
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   domain_text: &domain_text {type: http, interval: 86400, behavior: domain, format: text}
@@ -89,7 +89,7 @@ rule-anchor:
 
 # ---------------- 策略组 ----------------
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/rocket.svg", proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 新加坡自动, ♻️ 集合自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 新加坡节点, 🇺🇳 集合节点, 🌍 全部节点, 🌐 直连]}
+  - {name: 🚀 节点选择, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/rocket.svg", proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 新加坡自动, ♻️ 台湾自动, ♻️ 韩国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 新加坡节点, 🇹🇼 台湾节点, 🇰🇷 韩国节点, 🌍 全部节点, 🌐 直连]}
 
   # --- AI：每家一组 ---
   - {name: 🔮 OpenAI, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/openai.svg"}
@@ -123,14 +123,16 @@ proxy-groups:
   - {name: 🇯🇵 日本节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-jp.svg", filter: "(?i)日|jp|japan"}
   - {name: 🇺🇲 美国节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-us.svg", filter: "(?i)美|us|unitedstates|united states"}
   - {name: 🇸🇬 新加坡节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-sg.svg", filter: "(?i)新加坡|坡|狮城|sg|singapore"}
-  - {name: 🇺🇳 集合节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-tw.svg", filter: "(?i)台|tw|taiwan|韩|kr|korea"}
+  - {name: 🇹🇼 台湾节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-tw.svg", filter: "(?i)台|tw|taiwan"}
+  - {name: 🇰🇷 韩国节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-kr.svg", filter: "(?i)韩|kr|korea"}
 
   # --- 自动测速 ---
   - {name: ♻️ 香港自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
   - {name: ♻️ 日本自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$"}
   - {name: ♻️ 美国自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
   - {name: ♻️ 新加坡自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(新|SG|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$"}
-  - {name: ♻️ 集合自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?i)台|tw|taiwan|韩|kr|korea"}
+  - {name: ♻️ 台湾自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(台|TW|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$"}
+  - {name: ♻️ 韩国自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(韩|KR|(?i)Korea))^((?!(港|台|日|新|美)).)*$"}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, exclude-type: "Direct", icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300}
   - {name: 🌍 全部节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/all.svg"}
 

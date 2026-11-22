@@ -44,6 +44,14 @@ PLACEHOLDER_NODES = [
         "uuid": "00000000-0000-0000-0000-000000000000",
         "tls": {"enabled": True, "server_name": "sg.example.com"},
     },
+    {
+        "type": "vless",
+        "tag": "REPLACE-TW",
+        "server": "tw.example.com",
+        "server_port": 443,
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "tls": {"enabled": True, "server_name": "tw.example.com"},
+    },
 ]
 
 REGIONS = [
@@ -51,6 +59,7 @@ REGIONS = [
     ("🇯🇵 日本节点", "♻️ 日本自动", ["REPLACE-JP"]),
     ("🇺🇸 美国节点", "♻️ 美国自动", ["REPLACE-US"]),
     ("🇸🇬 新加坡节点", "♻️ 新加坡自动", ["REPLACE-SG"]),
+    ("🇹🇼 台湾节点", "♻️ 台湾自动", ["REPLACE-TW"]),
 ]
 
 DIRECT = "🌐 全球直连"
