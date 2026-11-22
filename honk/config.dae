@@ -262,11 +262,7 @@ experimental {
         ui: '/usr/share/doona'
     }
 
-    # Clash API 面板接口；设置强口令并按需限制来源。
-    clash_api {
-        external_controller: '0.0.0.0:9090'
-        external_ui: '/usr/share/honk/zashboard'
-        secret: '123456'
-        default_mode: Rule
-    }
+    # 这里不放 clash_api：块里一旦出现 secret 字段（空值也算），核心会把整份配置
+    # 标成只读，Doona 就加不了订阅和节点。需要 Clash 面板时在 LuCI「服务 → Honk」
+    # 里开启，密钥由面板写进 secrets.dae，本文件保持可写。
 }

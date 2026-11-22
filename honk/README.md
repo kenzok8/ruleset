@@ -37,6 +37,10 @@ honk 的 `default` / `remote` 是在定义 DNS 服务器那一刻就指定了走
 
 Doona 面板靠它连核心，dae 没有这一段。
 
+**4. 不放 `clash_api`**
+
+本仓库的 `config.dae` 只写 `native_api`。`clash_api` 块里一旦出现 `secret` 字段（值可以为空），核心会把整份配置标成只读，Doona 里新增订阅和节点会被拒绝。要 Clash 面板就在 LuCI「服务 → Honk」里开启，密钥由面板写进 `secrets.dae`，主配置保持可写。
+
 ## 两种运行模式
 
 配 LuCI 时，同一份 honk 有两套管理模式，切换入口在「配置」页顶部：
