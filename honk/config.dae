@@ -172,6 +172,10 @@ routing {
     # 禁用常见 QUIC 端口；需要 HTTP/3 时可删除此规则。
     l4proto(udp) && dport(443) -> block
 
+    # BT 走代理既费流量又拖慢节点。
+    pname(qbittorrent) -> direct(must)
+    dscp(4) -> direct(must)
+
     # --- 广告 ---
     domain(geosite: category-ads-all) -> block
 

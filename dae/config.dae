@@ -172,6 +172,10 @@ routing {
     # 禁用 QUIC（443/UDP）；需要 HTTP/3 时可删除此规则。
     l4proto(udp) && dport(443) -> block
 
+    # BT 走代理既费流量又拖慢节点。
+    pname(qbittorrent) -> direct(must)
+    dscp(4) -> direct(must)
+
     # --- AI：每家一个组，不用笼统的 AI 组 ---
     # OpenAI（含 ChatGPT 静态资源域，geosite: openai 偶尔漏掉新版域名）
     domain(geosite: openai, suffix: openai.com, suffix: chatgpt.com,
