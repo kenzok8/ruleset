@@ -127,7 +127,7 @@ dns:
 
 # ---------------- 锚点 ----------------
 # 覆写场景下没有 `🌐 直连` 这个 proxy，统一用内置的 DIRECT
-aipr: &pr {type: select, proxies: [🚀 节点选择, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 新加坡自动, ♻️ 台湾自动, ♻️ 韩国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 新加坡节点, 🇹🇼 台湾节点, 🇰🇷 韩国节点, 🌍 全部节点, DIRECT]}
+aipr: &pr {type: select, proxies: [节点选择, 香港自动, 日本自动, 美国自动, 新加坡自动, 台湾自动, 韩国自动, 自动选择, 香港节点, 日本节点, 美国节点, 新加坡节点, 台湾节点, 韩国节点, 全部节点, DIRECT]}
 
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
@@ -137,103 +137,103 @@ rule-anchor:
 
 # ---------------- 策略组 ----------------
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/rocket.svg", proxies: [♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, ♻️ 新加坡自动, ♻️ 台湾自动, ♻️ 韩国自动, ♻️ 自动选择, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 新加坡节点, 🇹🇼 台湾节点, 🇰🇷 韩国节点, 🌍 全部节点, DIRECT]}
+  - {name: 节点选择, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/rocket.svg", proxies: [香港自动, 日本自动, 美国自动, 新加坡自动, 台湾自动, 韩国自动, 自动选择, 香港节点, 日本节点, 美国节点, 新加坡节点, 台湾节点, 韩国节点, 全部节点, DIRECT]}
 
   # --- AI：每家一组 ---
-  - {name: 🔮 OpenAI, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/openai.svg"}
-  - {name: 🧠 Claude, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/claude.svg"}
-  - {name: 🤖 Gemini, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/gemini.svg"}
-  - {name: ✨ Muse, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/muse.svg"}
-  - {name: 🪄 AI 其他, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/ai.svg"}
+  - {name: OpenAI, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/openai.svg"}
+  - {name: Claude, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/claude.svg"}
+  - {name: Gemini, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/gemini.svg"}
+  - {name: Muse, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/muse.svg"}
+  - {name: AI 其他, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/ai.svg"}
 
   # --- 平台 ---
-  - {name: ▶️ YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/youtube.svg"}
-  - {name: 🔍 Google, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/google.svg"}
-  - {name: 🐦 Twitter, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/x.svg"}
-  - {name: 📦 GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/github.svg"}
-  - {name: 🪟 Microsoft, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/microsoft.svg"}
+  - {name: YouTube, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/youtube.svg"}
+  - {name: Google, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/google.svg"}
+  - {name: Twitter, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/x.svg"}
+  - {name: GitHub, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/github.svg"}
+  - {name: Microsoft, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/microsoft.svg"}
   - {name: 🐬 OneDrive, <<: *pr}
-  - {name: 🎵 TikTok, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/tiktok.svg"}
-  - {name: 📺 Netflix, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/netflix.svg"}
-  - {name: 🎬 流媒体, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/film.svg"}
-  - {name: 💳 PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/paypal.svg"}
-  - {name: 📲 电报消息, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/telegram.svg"}
+  - {name: TikTok, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/tiktok.svg"}
+  - {name: Netflix, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/netflix.svg"}
+  - {name: 流媒体, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/film.svg"}
+  - {name: PayPal, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/paypal.svg"}
+  - {name: 电报消息, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/telegram.svg"}
 
   # --- 特殊 ---
-  - {name: 🍏 Apple, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/apple.svg", proxies: [DIRECT, 🚀 节点选择]}
-  - {name: 📣 APNs 推送, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/bell.svg", proxies: [🚀 节点选择, ♻️ 自动选择, DIRECT]}
-  - {name: 🎯 全球直连, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/direct.svg", proxies: [DIRECT, 🚀 节点选择]}
-  - {name: 🏠 私有网络, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/home.svg", proxies: [DIRECT, 🚀 节点选择]}
-  - {name: 🌐 非中国, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/globe.svg"}
-  - {name: 🐟 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/fish.svg"}
+  - {name: Apple, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/apple.svg", proxies: [DIRECT, 节点选择]}
+  - {name: APNs 推送, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/bell.svg", proxies: [节点选择, 自动选择, DIRECT]}
+  - {name: 全球直连, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/direct.svg", proxies: [DIRECT, 节点选择]}
+  - {name: 私有网络, type: select, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/home.svg", proxies: [DIRECT, 节点选择]}
+  - {name: 非中国, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/globe.svg"}
+  - {name: 漏网之鱼, <<: *pr, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/fish.svg"}
 
   # --- 地区节点 ---
-  - {name: 🇭🇰 香港节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-hk.svg", filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇯🇵 日本节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-jp.svg", filter: "(?i)日|jp|japan"}
-  - {name: 🇺🇲 美国节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-us.svg", filter: "(?i)美|us|unitedstates|united states"}
-  - {name: 🇸🇬 新加坡节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-sg.svg", filter: "(?i)新加坡|坡|狮城|sg|singapore"}
-  - {name: 🇹🇼 台湾节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-tw.svg", filter: "(?i)台|tw|taiwan"}
-  - {name: 🇰🇷 韩国节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-kr.svg", filter: "(?i)韩|kr|korea"}
+  - {name: 香港节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-hk.svg", filter: "(?i)港|hk|hongkong|hong kong"}
+  - {name: 日本节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-jp.svg", filter: "(?i)日|jp|japan"}
+  - {name: 美国节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-us.svg", filter: "(?i)美|us|unitedstates|united states"}
+  - {name: 新加坡节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-sg.svg", filter: "(?i)新加坡|坡|狮城|sg|singapore"}
+  - {name: 台湾节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-tw.svg", filter: "(?i)台|tw|taiwan"}
+  - {name: 韩国节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/flag-kr.svg", filter: "(?i)韩|kr|korea"}
 
   # --- 自动测速 ---
-  - {name: ♻️ 香港自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
-  - {name: ♻️ 日本自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$"}
-  - {name: ♻️ 美国自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
-  - {name: ♻️ 新加坡自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$"}
-  - {name: ♻️ 台湾自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(台|TW|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$"}
-  - {name: ♻️ 韩国自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(韩|KR|(?i)Korea))^((?!(港|台|日|新|美)).)*$"}
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300}
-  - {name: 🌍 全部节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/all.svg"}
+  - {name: 香港自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
+  - {name: 日本自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$"}
+  - {name: 美国自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
+  - {name: 新加坡自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(新加坡|坡|狮城|SG|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$"}
+  - {name: 台湾自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(台|TW|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$"}
+  - {name: 韩国自动, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300, filter: "(?=.*(韩|KR|(?i)Korea))^((?!(港|台|日|新|美)).)*$"}
+  - {name: 自动选择, type: url-test, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/auto.svg", tolerance: 20, interval: 300}
+  - {name: 全部节点, type: select, include-all: true, icon: "https://raw.githubusercontent.com/kenzok8/ruleset/main/icon/all.svg"}
 
 # ---------------- 分流规则 ----------------
 rules:
   # 1. 局域网与私有地址
-  - RULE-SET,private_ip,🏠 私有网络,no-resolve
-  - RULE-SET,private_domain,🏠 私有网络
+  - RULE-SET,private_ip,私有网络,no-resolve
+  - RULE-SET,private_domain,私有网络
 
   # 2. 自己的补充名单
   - RULE-SET,direct1,DIRECT
-  - RULE-SET,proxylite,🚀 节点选择
+  - RULE-SET,proxylite,节点选择
 
   # 3. APNs（必须排在 Apple 之前）
-  - RULE-SET,apple_push,📣 APNs 推送
+  - RULE-SET,apple_push,APNs 推送
 
   # 4. AI 各家
-  - RULE-SET,openai_domain,🔮 OpenAI
-  - RULE-SET,claude_domain,🧠 Claude
-  - RULE-SET,gemini_domain,🤖 Gemini
-  - RULE-SET,muse_domain,✨ Muse
-  - RULE-SET,ai_domain,🪄 AI 其他
+  - RULE-SET,openai_domain,OpenAI
+  - RULE-SET,claude_domain,Claude
+  - RULE-SET,gemini_domain,Gemini
+  - RULE-SET,muse_domain,Muse
+  - RULE-SET,ai_domain,AI 其他
 
   # 5. 平台
-  - RULE-SET,youtube_domain,▶️ YouTube
-  - RULE-SET,google_domain,🔍 Google
-  - RULE-SET,github_domain,📦 GitHub
+  - RULE-SET,youtube_domain,YouTube
+  - RULE-SET,google_domain,Google
+  - RULE-SET,github_domain,GitHub
   - RULE-SET,onedrive_domain,🐬 OneDrive
   - RULE-SET,microsoftcn_domain,DIRECT
-  - RULE-SET,microsoft_domain,🪟 Microsoft
+  - RULE-SET,microsoft_domain,Microsoft
   - RULE-SET,applecn_domain,DIRECT
-  - RULE-SET,apple_domain,🍏 Apple
-  - RULE-SET,telegram_domain,📲 电报消息
-  - RULE-SET,tiktok_domain,🎵 TikTok
-  - RULE-SET,netflix_domain,📺 Netflix
-  - RULE-SET,paypal_domain,💳 PayPal
-  - RULE-SET,hulu_domain,🎬 流媒体
-  - RULE-SET,disney_domain,🎬 流媒体
-  - RULE-SET,hbo_domain,🎬 流媒体
-  - RULE-SET,amazon_domain,🎬 流媒体
+  - RULE-SET,apple_domain,Apple
+  - RULE-SET,telegram_domain,电报消息
+  - RULE-SET,tiktok_domain,TikTok
+  - RULE-SET,netflix_domain,Netflix
+  - RULE-SET,paypal_domain,PayPal
+  - RULE-SET,hulu_domain,流媒体
+  - RULE-SET,disney_domain,流媒体
+  - RULE-SET,hbo_domain,流媒体
+  - RULE-SET,amazon_domain,流媒体
 
   # 6. 国内外兜底
-  - RULE-SET,geolocation-!cn,🌐 非中国
-  - RULE-SET,cn_domain,🎯 全球直连
+  - RULE-SET,geolocation-!cn,非中国
+  - RULE-SET,cn_domain,全球直连
 
   # 7. IP 兜底
-  - RULE-SET,telegram_ip,📲 电报消息,no-resolve
-  - RULE-SET,google_ip,🔍 Google,no-resolve
-  - RULE-SET,netflix_ip,📺 Netflix,no-resolve
-  - RULE-SET,cn_ip,🎯 全球直连,no-resolve
+  - RULE-SET,telegram_ip,电报消息,no-resolve
+  - RULE-SET,google_ip,Google,no-resolve
+  - RULE-SET,netflix_ip,Netflix,no-resolve
+  - RULE-SET,cn_ip,全球直连,no-resolve
 
-  - MATCH,🐟 漏网之鱼
+  - MATCH,漏网之鱼
 
 # ---------------- 规则集 ----------------
 rule-providers:
