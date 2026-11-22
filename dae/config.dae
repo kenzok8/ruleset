@@ -172,9 +172,14 @@ routing {
     # 禁用 QUIC（443/UDP）；需要 HTTP/3 时可删除此规则。
     l4proto(udp) && dport(443) -> block
 
+    # DNS 服务的出站不能再被抓一次，否则成环；dnsmasq 用 127.0.0.1 源地址查上游，private 规则兜不住。
+    pname(dnsmasq, systemd-resolved) && l4proto(udp) && dport(53) -> direct(must)
+    pname(AdGuardHome, mosdns) -> direct(must)
     # BT 走代理既费流量又拖慢节点。
-    pname(qbittorrent) -> direct(must)
     dscp(4) -> direct(must)
+    pname(qbittorrent) -> direct(must)
+    # 其它代理核心直连，防止回环。
+    pname(mihomo, sing-box, clash, frpc, xray, v2ray) -> direct(must)
 
     # --- AI：每家一个组，不用笼统的 AI 组 ---
     # OpenAI（含 ChatGPT 静态资源域，geosite: openai 偶尔漏掉新版域名）
